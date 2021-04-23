@@ -57,6 +57,19 @@ function TicTacToe() {
   return (
     <main >
       <h1 className="title">Jogo da velha</h1>
+      <div className='responsive-score'>
+        <div className="current-player">
+          <h2>Jogador</h2>
+          <span className={currentPlayer}>{currentPlayer}</span>
+        </div>
+        <div className="placar">
+          <h2>PLACAR</h2>
+          <span className='x'>x <span>0</span></span>
+          vs
+          <span className='o'><span>0</span> o</span>
+        </div>
+      </div>
+      
       <div className={`board ${winner ? 'game-over' : ''}`}>
         {board.map((item, index) => (
             <div 
