@@ -7,51 +7,47 @@
 }
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
-  display: grid;
-  justify-content: center;
-
-  font-family: sans-serif;
-  height: 100vh;
-  background-color: rgb(147, 166, 180);
-
-  font-family: 'Architects Daughter', cursive;
-
+  background-color: rgb(182, 182, 182);
   color: #555;
+  display: grid;
+  font-family: 'Architects Daughter', cursive;
+  height: 100vh;
+  justify-content: center;
 }
 
 main {
-  display: flex;
   align-items: center;
+  display: flex;
+  height: 100vh;
   justify-content: space-evenly;
   position: relative;
   width: 100%;
-  height: 100vh;
 }
 
 header {
-  background-color: rgb(48, 48, 48);
   align-self: flex-start;
+  background-color: rgb(48, 48, 48);
+  display: none;
   height: 12vh;
   margin-bottom: 20px;
-  display: none;
   width: 100vw;
 }
 
 .placar {
+  background-color: rgba(255, 255, 255, 0.493);
+  border-radius: 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin: 10px;
-  width: 200px;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.493);
   padding: 20px;
+  width: 200px;
 }
 
 .placar h2 {
@@ -62,7 +58,6 @@ header {
   display: flex;
   margin-right: 50px;
   flex-direction: column-reverse;
-
 }
 
 .responsive-score div {
@@ -75,15 +70,14 @@ header {
 }
 
 .current-player {
-  display: flex;
   align-items: center;
-  justify-content: center;
-
-  margin: 10px;
-  width: 200px;
-  border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.493);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  margin: 10px;
   padding: 20px;
+  width: 200px;
 }
 
 .current-player h2 {
@@ -92,8 +86,8 @@ header {
 }
 
 .current-player, .placar {
-  text-align: center;
   font-size: 20px;
+  text-align: center;
 }
 
 .current-player.mobile {
@@ -101,19 +95,19 @@ header {
 }
 
 .title {
-  text-align: center;
-  font-size: 2rem;
   color: rgb(255, 255, 255);
+  font-size: 2rem;
   margin-bottom: 1rem;
-  width: 100%;
   padding: 20px;
+  text-align: center;
+  width: 100%;
 }
 
 .board {
   display: grid;
+  gap: 1rem;
   grid-template-columns: repeat(3,25vh);
   grid-template-rows: repeat(3,25vh);
-  gap: 1rem;
 }
 
 .board.game-over {
@@ -121,18 +115,16 @@ header {
 }
 
 .cell {
-  display: grid;
   align-items: center;
-  justify-content: center;
-
   background-color: white;
   border-radius: 5px;
+  color: #00000066;
+  cursor: pointer;
+  display: grid;
   font-family: 'Fredoka One', cursive;
   font-size: 80px;
   font-weight: bold;
-  color: #00000066;
-
-  cursor: pointer;
+  justify-content: center;
 }
 
 .cell.o, .cell.x, .game-over .cell {
@@ -152,21 +144,21 @@ header {
 }
 
 .restart-game {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.9);
+  border: black 1px solid;
+  border-radius: 10px;
+  box-shadow: 0 0 25px -5px;
   color: white;
-  width: 300px;
+  display: flex;
+  flex-direction: column;
   height: 150px;
+  justify-content: center;
+  left: calc(50% - 150px) ;
   position: absolute;
   text-align: center;
   top: calc(50% - 87px) ;
-  left: calc(50% - 150px) ;
-  border: black 1px solid;
-  background-color: rgba(0, 0, 0, 0.9);
-  box-shadow: 0 0 25px -5px;
-  border-radius: 10px;
+  width: 300px;
 }
 
 span.x, span.o {
@@ -175,10 +167,10 @@ span.x, span.o {
 }
 
 span.x span, span.o span {
-  color: rgb(78, 78, 78);
   background-color: rgba(255, 255, 255, 0.507);
-  padding: 5px;
   border-radius: 5px;
+  color: rgb(78, 78, 78);
+  padding: 5px;
 }
 
 .winner-message {
@@ -198,11 +190,11 @@ span.x {
 }
 
 .restart-btn {
-  padding: 10px 20px;
-  border: none;
-  color: white;
-  border-radius: 6px;
   background-image: linear-gradient(rgb(36, 100, 36),rgb(56, 139, 56), rgb(115, 189, 96));
+  border: none;
+  border-radius: 6px;
+  color: white;
+  padding: 10px 20px;
 }
 
 @media screen and (max-width: 950px) {
@@ -225,9 +217,9 @@ span.x {
   }
   .board {
     display: grid;
+    gap: 1rem;
     grid-template-columns: repeat(3,130px);
     grid-template-rows: repeat(3,120px);
-    gap: 1rem;
   }
   
 }
@@ -244,8 +236,8 @@ span.x {
     margin: 0;
   }
   .responsive-score div {
-    width: 100%;
     height: 120px;
+    width: 100%;
   }
   .current-player {
     display: none;
@@ -256,9 +248,9 @@ span.x {
   }
   .board {
     display: grid;
+    gap: 10px;
     grid-template-columns: repeat(3,80px);
     grid-template-rows: repeat(3,80px);
-    gap: 10px;
   }
   .cell {
     font-size: 40px;
