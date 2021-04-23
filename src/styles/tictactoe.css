@@ -14,25 +14,39 @@
 
 body {
   display: grid;
-  align-items: center;
   justify-content: center;
 
   font-family: sans-serif;
   height: 100vh;
-  background-color: rgb(189, 189, 189);
+  background-color: rgb(147, 166, 180);
 
   font-family: 'Architects Daughter', cursive;
 
   color: #555;
 }
 
+main {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+header {
+  background-color: rgb(48, 48, 48);
+  align-self: flex-start;
+  height: 12vh;
+  margin-bottom: 20px;
+  display: none;
+  width: 100vw;
+}
+
 .placar {
-  position: absolute;
-  top: 0;
-  right: 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin: 10px;
   width: 200px;
   border-radius: 10px;
@@ -46,15 +60,25 @@ body {
 
 .responsive-score {
   display: flex;
+  margin-right: 50px;
+  flex-direction: column-reverse;
+
+}
+
+.responsive-score div {
+  height: 25vh;
+}
+
+.current-player.res-title {
+  background-color: rgb(32, 32, 32);
+  color: white;
 }
 
 .current-player {
-  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 0;
-  left: 0;
+
   margin: 10px;
   width: 200px;
   border-radius: 10px;
@@ -64,6 +88,7 @@ body {
 
 .current-player h2 {
   margin: 10px;
+  width: 200px;
 }
 
 .current-player, .placar {
@@ -71,18 +96,23 @@ body {
   font-size: 20px;
 }
 
+.current-player.mobile {
+  display: none;
+}
+
 .title {
   text-align: center;
   font-size: 2rem;
-  color: #555;
+  color: rgb(255, 255, 255);
   margin-bottom: 1rem;
   width: 100%;
+  padding: 20px;
 }
 
 .board {
   display: grid;
-  grid-template-columns: repeat(3,150px);
-  grid-template-rows: repeat(3,150px);
+  grid-template-columns: repeat(3,25vh);
+  grid-template-rows: repeat(3,25vh);
   gap: 1rem;
 }
 
@@ -173,4 +203,64 @@ span.x {
   color: white;
   border-radius: 6px;
   background-image: linear-gradient(rgb(36, 100, 36),rgb(56, 139, 56), rgb(115, 189, 96));
+}
+
+@media screen and (max-width: 950px) {
+  main {
+    flex-direction: column;
+    height: 80vh;
+  }
+  header {
+    display: flex;
+  }
+  .responsive-score {
+    flex-direction: row;
+    margin: 0;
+  }
+  .responsive-score div {
+    height: 120px;
+  }
+  .res-title {
+    display: none;
+  }
+  .board {
+    display: grid;
+    grid-template-columns: repeat(3,130px);
+    grid-template-rows: repeat(3,120px);
+    gap: 1rem;
+  }
+  
+}
+
+@media screen and (max-width: 450px) {
+  header {
+    width: 100vw;
+  }
+
+  main {
+    width: 100%;
+  }
+  .responsive-score {
+    margin: 0;
+  }
+  .responsive-score div {
+    width: 100%;
+    height: 120px;
+  }
+  .current-player {
+    display: none;
+  }
+  .current-player.mobile {
+    display: flex;
+    width: 288px;
+  }
+  .board {
+    display: grid;
+    grid-template-columns: repeat(3,80px);
+    grid-template-rows: repeat(3,80px);
+    gap: 10px;
+  }
+  .cell {
+    font-size: 40px;
+  }
 }

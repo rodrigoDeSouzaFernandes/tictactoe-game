@@ -2,10 +2,15 @@ import React, { useState, useEffect } from 'react'
 import '../src/styles/tictactoe.css'
 function TicTacToe() {
   const emptyBoard = Array(9).fill('');
+  const initialScore = {
+    x: 0,
+    o: 0,
+  }
+
   const [board, setBoard] = useState(emptyBoard)
   const [currentPlayer, setCurrentPlayer] = useState('x')
   const [winner, setWinner] = useState(null)
-  console.log(winner)
+  const [score, setScore] = useState(initialScore)
 
   const handleCellClick = (index) => {
     if(winner) return null;
@@ -46,7 +51,15 @@ function TicTacToe() {
     }
   }
 
-  useEffect(checkWinner, [board])
+  const addScore = () => {
+      setScore({
+        ...score,
+        [winner]: score[winner] += 1,
+      })
+  }
+
+  useEffect(checkWinner, [board]);
+  useEffect(addScore, [winner])
 
   const resetGame = () => {
     setCurrentPlayer('x');
@@ -55,18 +68,24 @@ function TicTacToe() {
   }
 
   return (
+    <>
+    <header>
+      <h1 className="title">Jogo da velha#</h1>
+    </header>
     <main >
-      <h1 className="title">Jogo da velha</h1>
       <div className='responsive-score'>
         <div className="current-player">
-          <h2>Jogador</h2>
+          <h2>Jogador:</h2>
           <span className={currentPlayer}>{currentPlayer}</span>
         </div>
         <div className="placar">
           <h2>PLACAR</h2>
-          <span className='x'>x <span>0</span></span>
+          <span className='x'>X <span>{score.x}</span></span>
           vs
-          <span className='o'><span>0</span> o</span>
+          <span className='o'><span>{score.o}</span> O</span>
+        </div>
+        <div className="current-player res-title">
+          <h2>Jogo da velha#</h2>
         </div>
       </div>
       
@@ -98,7 +117,12 @@ function TicTacToe() {
           <button className="restart-btn" onClick={resetGame}>Recomeçar jogo</button>
         </div>
       }
+      <div className="current-player mobile">
+          <h2>Jogador:</h2>
+          <span className={currentPlayer}>{currentPlayer}</span>
+        </div>
     </main>
+    </>
   );
 }
 
