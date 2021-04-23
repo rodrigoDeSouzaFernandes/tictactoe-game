@@ -25,6 +25,12 @@ function TicTacToe() {
     )
   }
 
+    const checkDraw = () => {
+    if(board.every(item => item !== '')) {
+      setWinner('E')
+    }
+  }
+
   const checkWinner = () => {
     const possibleWaysToWin = [
       [board[0], board[1], board[2]],
@@ -38,17 +44,11 @@ function TicTacToe() {
     ];
 
     possibleWaysToWin.forEach((cells) => {
-      if(cells.every(cell => cell === "o")) setWinner('o')
-      if(cells.every(cell => cell === "x")) setWinner('x')
+      if(cells.every(cell => cell === "o")) setWinner('o');
+      else if(cells.every(cell => cell === "x")) setWinner('x');
     });
 
     checkDraw();
-  }
-
-  const checkDraw = () => {
-    if(board.every(item => item !== '')) {
-      setWinner('E')
-    }
   }
 
   const addScore = () => {
